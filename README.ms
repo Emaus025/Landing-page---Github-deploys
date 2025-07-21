@@ -174,23 +174,8 @@ Este proyecto utiliza GitHub Actions para despliegue automático:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
-
 ## 👨‍💻 Autor
 
 **Tu Nombre**
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- Email: tu-email@ejemplo.com
-- LinkedIn: [Tu Perfil](https://linkedin.com/in/tu-perfil)
+- GitHub: [@tu-usuario](https://github.com/Emaus025)
 
-## 🙏 Agradecimientos
-
-- Font Awesome por los iconos
-- GitHub Pages por el hosting gratuito
-- Comunidad de desarrolladores por la inspiración
-
----
-
-⭐ **¡No olvides dar una estrella al proyecto si te gustó!** ⭐
