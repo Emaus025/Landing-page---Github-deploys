@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install --save-dev html-minifier clean-css-cli uglify-js
+        
+    - name: Build
+      run: |
+        # Crear directorio de build
+        mkdir -p dist
+        
+        # Minificar HTML
+        npx html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js index.html -o dist/index.html
+        
+        # Minificar CSS
+        npx cleancss -o dist/styles.css styles.css
+        
+        # Minificar JavaScript
+        npx uglifyjs script.js -o dist/script.js
+        
+        # Copiar archivos adicionales si existen
+        cp -r assets dist/ 2>/dev/null || :
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
